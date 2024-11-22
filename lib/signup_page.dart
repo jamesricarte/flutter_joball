@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:joball/signup_page.dart';
+import 'package:joball/login_page.dart';
 import 'package:joball/components/custom_textformfield.dart';
 import 'package:joball/components/custom_elevatedbutton.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: const Row(
                   children: [
                     Text(
-                      "Login to",
+                      "Sign Up to",
                       style: TextStyle(
                           fontSize: 34.0,
                           color: Colors.white,
@@ -54,6 +55,33 @@ class _LoginPageState extends State<LoginPage> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: const Text(
+                        "Name",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 197, 197, 197),
+                            fontSize: 18),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: CustomTextformfield(
+                        hintText: "Your Name",
+                        controller: nameController,
+                        variant: TextFieldVariant.normal,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a name';
+                          } else if (value.length < 2) {
+                            return 'Name must have minimum of 2 characters';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
@@ -105,23 +133,12 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: InkWell(
-                        onTap: () {},
-                        child: const Text(
-                          "Forget Password?",
-                          style: TextStyle(color: Colors.green, fontSize: 18),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 38),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: CustomElevatedButton(
                         variant: ElevatedButtonVariant.filled,
-                        label: "Login",
+                        label: "Sign Up",
                         onPressed: () {
                           if (_formKey.currentState?.validate() ?? false) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -218,7 +235,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Row(
                   children: [
                     const Text(
-                      "Don't have an account yet?",
+                      "Already have an account?",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     Container(
@@ -228,10 +245,10 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const SignupPage()));
+                                  builder: (context) => const LoginPage()));
                         },
                         child: const Text(
-                          "Sign Up",
+                          "Login",
                           style: TextStyle(color: Colors.green, fontSize: 16),
                         ),
                       ),
