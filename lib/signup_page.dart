@@ -13,9 +13,11 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _SignupPageState extends State<SignupPage> {
         child: Container(
           width: double.infinity,
           padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
+              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
           child: Column(
             children: [
               SizedBox(
@@ -50,7 +52,7 @@ class _SignupPageState extends State<SignupPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 30),
               Form(
                 key: _formKey,
                 child: Column(
@@ -58,7 +60,7 @@ class _SignupPageState extends State<SignupPage> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
-                        "Name",
+                        "First Name",
                         style: TextStyle(
                             color: Color.fromARGB(255, 197, 197, 197),
                             fontSize: 18),
@@ -68,12 +70,13 @@ class _SignupPageState extends State<SignupPage> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: CustomTextformfield(
-                        hintText: "Your Name",
-                        controller: nameController,
+                        hintText: "Your First Name",
+                        controller: firstNameController,
                         variant: TextFieldVariant.normal,
+                        contentPadding: const EdgeInsets.all(12),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter a name';
+                            return 'Please enter a first name';
                           } else if (value.length < 2) {
                             return 'Name must have minimum of 2 characters';
                           }
@@ -81,7 +84,35 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: const Text(
+                        "Last Name",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 197, 197, 197),
+                            fontSize: 18),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: CustomTextformfield(
+                        hintText: "Your Last Name",
+                        controller: lastNameController,
+                        variant: TextFieldVariant.normal,
+                        contentPadding: const EdgeInsets.all(12),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a last name';
+                          } else if (value.length < 2) {
+                            return 'Name must have minimum of 2 characters';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
@@ -98,6 +129,7 @@ class _SignupPageState extends State<SignupPage> {
                         hintText: "user@email.com",
                         controller: emailController,
                         variant: TextFieldVariant.email,
+                        contentPadding: const EdgeInsets.all(12),
                         validator: (value) {
                           if (value == null || !value.contains('@')) {
                             return 'Please enter a valid email';
@@ -106,7 +138,7 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 8),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
@@ -123,6 +155,7 @@ class _SignupPageState extends State<SignupPage> {
                         hintText: "Your Password",
                         controller: passwordController,
                         variant: TextFieldVariant.password,
+                        contentPadding: const EdgeInsets.all(12),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a password';
@@ -133,7 +166,35 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 38),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: const Text(
+                        "Confirm Password",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 197, 197, 197),
+                            fontSize: 18),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: CustomTextformfield(
+                        hintText: "Confirm your Password",
+                        controller: confirmPasswordController,
+                        variant: TextFieldVariant.password,
+                        contentPadding: const EdgeInsets.all(12),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please confirm your password';
+                          } else if (value != passwordController.text) {
+                            return 'Password confirmation did not match';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 32),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: CustomElevatedButton(
