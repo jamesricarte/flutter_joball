@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:joball/dashboard.dart';
 import 'package:joball/signup_page.dart';
 import 'package:joball/components/custom_textformfield.dart';
 import 'package:joball/components/custom_elevatedbutton.dart';
@@ -124,9 +125,10 @@ class _LoginPageState extends State<LoginPage> {
                         label: "Login",
                         onPressed: () {
                           if (_formKey.currentState?.validate() ?? false) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Processing Data')),
-                            );
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Dashboard()));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
