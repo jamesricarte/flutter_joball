@@ -163,8 +163,8 @@ class _SignupPageState extends State<SignupPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a password';
-                          } else if (value.length < 9) {
-                            return 'Password must have minimum of 9 characters';
+                          } else if (value.length < 8) {
+                            return 'Password must have minimum of 8 characters';
                           }
                           return null;
                         },
@@ -206,24 +206,31 @@ class _SignupPageState extends State<SignupPage> {
                         label: "Sign Up",
                         onPressed: () async {
                           if (_formKey.currentState?.validate() ?? false) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Processing Data')),
-                            );
-
                             final email = emailController.text;
                             final password = passwordController.text;
-                            final user =
-                                await _authService.signUp(email, password);
 
-                            if (user != null) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const LoginPage()));
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
+                            try {
+                              final user =
+                                  await _authService.signUp(email, password);
+
+                              if (user != null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text('Sign Up Failed')));
+                                      content: Text(
+                                          'Sign up successfull! Redirecting to login.')),
+                                );
+
+                                await Future.delayed(Duration(seconds: 2));
+
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LoginPage()));
+                              }
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(e.toString())));
                             }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(

@@ -103,8 +103,8 @@ class _LoginPageState extends State<LoginPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a password';
-                          } else if (value.length < 2) {
-                            return 'Password must have minimum of 2 characters';
+                          } else if (value.length < 8) {
+                            return 'Password must have minimum of 8 characters';
                           }
                           return null;
                         },
@@ -131,18 +131,20 @@ class _LoginPageState extends State<LoginPage> {
                           if (_formKey.currentState?.validate() ?? false) {
                             final email = emailController.text;
                             final password = passwordController.text;
-                            final user =
-                                await _authService.siginIn(email, password);
 
-                            if (user != null) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Dashboard()));
-                            } else {
+                            try {
+                              final user =
+                                  await _authService.signIn(email, password);
+                              if (user != null) {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Dashboard()));
+                              }
+                            } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text('Invalid Credentials')));
+                                  SnackBar(content: Text(e.toString())));
                             }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
