@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1097539213894",
+    "project_id": "recruify-768af",
+    "storage_bucket": "recruify-768af.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097539213894:android:7aa522267173cf296d8847",
+        "android_client_info": {
+          "package_name": "com.example.joball"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe7kJRPcjpMRBIvgdVLXrqUfU6FXvy2TA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

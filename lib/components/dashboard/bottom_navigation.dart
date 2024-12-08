@@ -8,17 +8,27 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.business), label: "Companies"),
         BottomNavigationBarItem(
-          icon: CircleAvatar(
-            radius: 11,
-            backgroundColor: Color.fromARGB(255, 109, 109, 109),
-          ),
-          label: "Profile",
+          icon: Icon(Icons.home_outlined),
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.explore_outlined),
+          label: "Explorer",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.work_outline),
+          label: "Activity",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings_outlined),
+          label: "Settings",
         ),
       ],
       onTap: onTap,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.black,
+      type: BottomNavigationBarType.fixed,
     );
   }
 }

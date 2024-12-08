@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:joball/login_page.dart';
 import 'package:joball/components/custom_textformfield.dart';
 import 'package:joball/components/custom_elevatedbutton.dart';
+import 'package:joball/auth/auth_service.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -12,6 +13,7 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
+  final AuthService _authService = AuthService();
 
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -131,7 +133,9 @@ class _SignupPageState extends State<SignupPage> {
                         variant: TextFieldVariant.email,
                         contentPadding: const EdgeInsets.all(12),
                         validator: (value) {
-                          if (value == null || !value.contains('@')) {
+                          if (value == null ||
+                              !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
+                                  .hasMatch(value)) {
                             return 'Please enter a valid email';
                           }
                           return null;
@@ -200,11 +204,27 @@ class _SignupPageState extends State<SignupPage> {
                       child: CustomElevatedButton(
                         variant: ElevatedButtonVariant.filled,
                         label: "Sign Up",
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState?.validate() ?? false) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Processing Data')),
                             );
+
+                            final email = emailController.text;
+                            final password = passwordController.text;
+                            final user =
+                                await _authService.signUp(email, password);
+
+                            if (user != null) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LoginPage()));
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Sign Up Failed')));
+                            }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -303,7 +323,7 @@ class _SignupPageState extends State<SignupPage> {
                       margin: const EdgeInsets.only(left: 5),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const LoginPage()));

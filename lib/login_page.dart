@@ -3,6 +3,7 @@ import 'package:joball/dashboard.dart';
 import 'package:joball/signup_page.dart';
 import 'package:joball/components/custom_textformfield.dart';
 import 'package:joball/components/custom_elevatedbutton.dart';
+import 'package:joball/auth/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,6 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  final AuthService _authService = AuthService();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -72,7 +74,9 @@ class _LoginPageState extends State<LoginPage> {
                         controller: emailController,
                         variant: TextFieldVariant.email,
                         validator: (value) {
-                          if (value == null || !value.contains('@')) {
+                          if (value == null ||
+                              !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
+                                  .hasMatch(value)) {
                             return 'Please enter a valid email';
                           }
                           return null;
@@ -99,8 +103,8 @@ class _LoginPageState extends State<LoginPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a password';
-                          } else if (value.length < 9) {
-                            return 'Password must have minimum of 9 characters';
+                          } else if (value.length < 2) {
+                            return 'Password must have minimum of 2 characters';
                           }
                           return null;
                         },
@@ -123,12 +127,23 @@ class _LoginPageState extends State<LoginPage> {
                       child: CustomElevatedButton(
                         variant: ElevatedButtonVariant.filled,
                         label: "Login",
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState?.validate() ?? false) {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Dashboard()));
+                            final email = emailController.text;
+                            final password = passwordController.text;
+                            final user =
+                                await _authService.siginIn(email, password);
+
+                            if (user != null) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Dashboard()));
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Invalid Credentials')));
+                            }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -227,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                       margin: const EdgeInsets.only(left: 5),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const SignupPage()));
