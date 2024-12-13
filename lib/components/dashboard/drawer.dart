@@ -23,16 +23,11 @@ class CustomDrawer extends StatelessWidget {
               size: 50,
             ),
           ),
-          decoration: BoxDecoration(color: Colors.green),
+          decoration: BoxDecoration(color: Colors.black),
         ),
         ListTile(
           leading: const Icon(Icons.person),
           title: const Text("Profile"),
-          onTap: () {},
-        ),
-        ListTile(
-          leading: const Icon(Icons.settings),
-          title: const Text("Settings"),
           onTap: () {},
         ),
         ListTile(

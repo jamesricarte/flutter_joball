@@ -6,19 +6,33 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
-        "Recruify",
-        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+      automaticallyImplyLeading: false,
+      title: Container(
+        margin: EdgeInsets.only(left: 13),
+        child: GestureDetector(
+          onTap: () {
+            Scaffold.of(context).openDrawer();
+          },
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/logos/app/app_logo.png',
+                height: 35,
+              ),
+              const Text(
+                "Job All",
+                style: TextStyle(
+                    fontSize: 27,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 12, 35, 75)),
+              ),
+            ],
+          ),
+        ),
       ),
-      iconTheme: const IconThemeData(color: Colors.white),
-      backgroundColor: Colors.green,
       actions: [
         IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.notifications),
+          icon: const Icon(Icons.notifications_active),
           onPressed: () {},
         )
       ],

@@ -22,37 +22,38 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
           padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
+              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.13),
           child: Column(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/logos/app/app_logo.png', height: 58),
+                  const Text(
+                    "Job All",
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 12, 35, 75)),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 50),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
-                child: const Row(
-                  children: [
-                    Text(
-                      "Login to",
-                      style: TextStyle(
-                          fontSize: 34.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Recruify",
-                      style: TextStyle(
-                          fontSize: 34.0,
-                          color: Colors.green,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ],
+                child: const Text(
+                  "Login",
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800),
                 ),
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 24),
               Form(
                 key: _formKey,
                 child: Column(
@@ -61,9 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
                         "Email",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 197, 197, 197),
-                            fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -88,9 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
                         "Password",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 197, 197, 197),
-                            fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -117,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {},
                         child: const Text(
                           "Forget Password?",
-                          style: TextStyle(color: Colors.green, fontSize: 18),
+                          style: TextStyle(color: Colors.blue, fontSize: 18),
                         ),
                       ),
                     ),
@@ -173,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         "OR",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -238,7 +235,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     const Text(
                       "Don't have an account yet?",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: Colors.black, fontSize: 16),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 5),
@@ -251,7 +248,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: const Text(
                           "Sign Up",
-                          style: TextStyle(color: Colors.green, fontSize: 16),
+                          style: TextStyle(color: Colors.blue, fontSize: 16),
                         ),
                       ),
                     ),

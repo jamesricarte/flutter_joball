@@ -15,8 +15,6 @@ class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
   final AuthService _authService = AuthService();
 
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -24,37 +22,40 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.13,
+              bottom: MediaQuery.of(context).size.height * 0.06),
           child: Column(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/logos/app/app_logo.png', height: 58),
+                  const Text(
+                    "Job All",
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 12, 35, 75)),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
-                child: const Row(
-                  children: [
-                    Text(
-                      "Sign Up to",
-                      style: TextStyle(
-                          fontSize: 34.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Recruify",
-                      style: TextStyle(
-                          fontSize: 34.0,
-                          color: Colors.green,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ],
+                child: const Text(
+                  "Sign Up",
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800),
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 24),
               Form(
                 key: _formKey,
                 child: Column(
@@ -62,66 +63,8 @@ class _SignupPageState extends State<SignupPage> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
-                        "First Name",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 197, 197, 197),
-                            fontSize: 18),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: CustomTextformfield(
-                        hintText: "Your First Name",
-                        controller: firstNameController,
-                        variant: TextFieldVariant.normal,
-                        contentPadding: const EdgeInsets.all(12),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a first name';
-                          } else if (value.length < 2) {
-                            return 'Name must have minimum of 2 characters';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: const Text(
-                        "Last Name",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 197, 197, 197),
-                            fontSize: 18),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: CustomTextformfield(
-                        hintText: "Your Last Name",
-                        controller: lastNameController,
-                        variant: TextFieldVariant.normal,
-                        contentPadding: const EdgeInsets.all(12),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a last name';
-                          } else if (value.length < 2) {
-                            return 'Name must have minimum of 2 characters';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: const Text(
                         "Email",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 197, 197, 197),
-                            fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -131,7 +74,6 @@ class _SignupPageState extends State<SignupPage> {
                         hintText: "user@email.com",
                         controller: emailController,
                         variant: TextFieldVariant.email,
-                        contentPadding: const EdgeInsets.all(12),
                         validator: (value) {
                           if (value == null ||
                               !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
@@ -142,14 +84,12 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 20),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
                         "Password",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 197, 197, 197),
-                            fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -159,7 +99,6 @@ class _SignupPageState extends State<SignupPage> {
                         hintText: "Your Password",
                         controller: passwordController,
                         variant: TextFieldVariant.password,
-                        contentPadding: const EdgeInsets.all(12),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a password';
@@ -170,14 +109,12 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 20),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: const Text(
                         "Confirm Password",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 197, 197, 197),
-                            fontSize: 18),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -187,7 +124,6 @@ class _SignupPageState extends State<SignupPage> {
                         hintText: "Confirm your Password",
                         controller: confirmPasswordController,
                         variant: TextFieldVariant.password,
-                        contentPadding: const EdgeInsets.all(12),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please confirm your password';
@@ -259,7 +195,7 @@ class _SignupPageState extends State<SignupPage> {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         "OR",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -324,7 +260,7 @@ class _SignupPageState extends State<SignupPage> {
                   children: [
                     const Text(
                       "Already have an account?",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: Colors.black, fontSize: 16),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 5),
@@ -337,7 +273,7 @@ class _SignupPageState extends State<SignupPage> {
                         },
                         child: const Text(
                           "Login",
-                          style: TextStyle(color: Colors.green, fontSize: 16),
+                          style: TextStyle(color: Colors.blue, fontSize: 16),
                         ),
                       ),
                     ),

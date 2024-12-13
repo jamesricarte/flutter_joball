@@ -24,10 +24,10 @@ class CustomElevatedButton extends StatelessWidget {
       case ElevatedButtonVariant.filled:
         elevatedButtonVariant = ElevatedButton(
           style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.black,
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.0))),
+                  borderRadius: BorderRadius.circular(12))),
           onPressed: onPressed,
           child: Text(label,
               style:
@@ -36,10 +36,10 @@ class CustomElevatedButton extends StatelessWidget {
       case ElevatedButtonVariant.outlined:
         elevatedButtonVariant = ElevatedButton(
           style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
+              backgroundColor: Colors.black,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.0)),
+                  borderRadius: BorderRadius.circular(12)),
               side: const BorderSide(
                   color: Color.fromARGB(255, 31, 31, 31), width: 1)),
           onPressed: onPressed,

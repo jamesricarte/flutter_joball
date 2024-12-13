@@ -8,6 +8,8 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController searchController = TextEditingController();
+
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const CustomDrawer(),
@@ -16,8 +18,39 @@ class Dashboard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              child: TextField(
+                controller: searchController,
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 113, 113, 113),
+                    fontWeight: FontWeight.w500),
+                decoration: InputDecoration(
+                    prefixIcon: Container(
+                        margin: const EdgeInsets.only(left: 20, right: 4),
+                        child: const Icon(Icons.search, size: 32)),
+                    prefixIconColor: const Color.fromARGB(255, 113, 113, 113),
+                    hintText: 'Search Job, Company & Role',
+                    hintStyle: const TextStyle(
+                        color: Color.fromARGB(255, 113, 113, 113),
+                        fontSize: 18),
+                    contentPadding: EdgeInsets.symmetric(vertical: 14),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 225, 225, 225),
+                            width: 2),
+                        borderRadius: BorderRadius.circular(14)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(255, 190, 190, 190), width: 2),
+                      borderRadius: BorderRadius.circular(14),
+                    )),
+              ),
+            ),
+            Container(
               width: MediaQuery.of(context).size.width * 0.8,
-              margin: const EdgeInsets.only(top: 18, bottom: 10),
+              margin: const EdgeInsets.only(bottom: 10),
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,8 +72,8 @@ class Dashboard extends StatelessWidget {
                 children: [
                   Container(
                     width: 260,
-                    margin: EdgeInsets.only(left: 20),
-                    padding: EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         border: Border.all(
                           color: const Color.fromARGB(255, 235, 235, 235),
@@ -61,7 +94,7 @@ class Dashboard extends StatelessWidget {
                                       Color.fromARGB(255, 232, 232, 232),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(left: 6),
+                                  margin: const EdgeInsets.only(left: 6),
                                   child: const Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -86,12 +119,12 @@ class Dashboard extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 12),
+                          margin: const EdgeInsets.symmetric(vertical: 12),
                           child: Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(right: 5),
-                                child: CircleAvatar(
+                                margin: const EdgeInsets.only(right: 5),
+                                child: const CircleAvatar(
                                   radius: 5,
                                   backgroundColor: Colors.green,
                                 ),
@@ -107,7 +140,7 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(bottom: 3),
+                          margin: const EdgeInsets.only(bottom: 3),
                           child: const Row(
                             children: [
                               Icon(Icons.work_outline),
@@ -134,7 +167,7 @@ class Dashboard extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10),
+                          margin: const EdgeInsets.only(top: 10),
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {},
@@ -151,11 +184,11 @@ class Dashboard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Container(
                     width: 260,
-                    padding: EdgeInsets.all(12),
-                    margin: EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(right: 20),
                     decoration: BoxDecoration(
                         border: Border.all(
                           color: const Color.fromARGB(255, 235, 235, 235),
@@ -176,7 +209,7 @@ class Dashboard extends StatelessWidget {
                                       Color.fromARGB(255, 232, 232, 232),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(left: 6),
+                                  margin: const EdgeInsets.only(left: 6),
                                   child: const Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -201,12 +234,12 @@ class Dashboard extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 12),
+                          margin: const EdgeInsets.symmetric(vertical: 12),
                           child: Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(right: 4),
-                                child: CircleAvatar(
+                                margin: const EdgeInsets.only(right: 4),
+                                child: const CircleAvatar(
                                   radius: 5,
                                   backgroundColor: Colors.green,
                                 ),
@@ -222,7 +255,7 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(bottom: 3),
+                          margin: const EdgeInsets.only(bottom: 3),
                           child: const Row(
                             children: [
                               Icon(Icons.work_outline),
@@ -249,7 +282,7 @@ class Dashboard extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10),
+                          margin: const EdgeInsets.only(top: 10),
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {},
@@ -309,7 +342,7 @@ class Dashboard extends StatelessWidget {
                             backgroundColor: Color.fromARGB(255, 232, 232, 232),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 6),
+                            margin: const EdgeInsets.only(left: 6),
                             child: const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -333,7 +366,7 @@ class Dashboard extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 12, bottom: 3),
+                    margin: const EdgeInsets.only(top: 12, bottom: 3),
                     child: const Row(
                       children: [
                         Icon(Icons.location_on_outlined),
@@ -362,11 +395,11 @@ class Dashboard extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 20),
                       child: Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 4, vertical: 2),
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 241, 241, 241),
@@ -387,9 +420,9 @@ class Dashboard extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 4, vertical: 2),
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 241, 241, 241),
@@ -410,9 +443,9 @@ class Dashboard extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 4, vertical: 2),
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 241, 241, 241),
@@ -438,7 +471,7 @@ class Dashboard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {},
@@ -453,7 +486,7 @@ class Dashboard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 20),
                     child: const Text(
                         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta id assumenda accusantium eligendi repudiandae non modi ullam error facere, unde voluptate. Quasi, accusamus earum! repudiandae non modi ullam error facere."),
                   )

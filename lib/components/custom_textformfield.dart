@@ -31,72 +31,99 @@ class _CustomTextformfieldState extends State<CustomTextformfield> {
     switch (widget.variant) {
       case TextFieldVariant.normal:
         textFormFieldVariant = TextFormField(
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(
+              fontSize: 18,
+              color: Color.fromARGB(255, 113, 113, 113),
+              fontWeight: FontWeight.w500),
           controller: widget.controller,
           keyboardType: TextInputType.text,
           validator: widget.validator,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            labelStyle: const TextStyle(color: Colors.grey),
+            hintStyle: const TextStyle(
+                color: Color.fromARGB(255, 113, 113, 113), fontSize: 18),
             contentPadding: widget.contentPadding ?? const EdgeInsets.all(16),
-            border: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: Color.fromARGB(255, 53, 53, 53)),
-                borderRadius: BorderRadius.circular(8.0)),
+            enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 225, 225, 225), width: 2),
+                borderRadius: BorderRadius.circular(14)),
             focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8.0)),
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 190, 190, 190), width: 2),
+                borderRadius: BorderRadius.circular(14)),
             errorBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: Color.fromARGB(255, 159, 44, 36)),
-                borderRadius: BorderRadius.circular(8.0)),
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 159, 44, 36), width: 2),
+                borderRadius: BorderRadius.circular(14)),
+            focusedErrorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 159, 44, 36), width: 2),
+                borderRadius: BorderRadius.circular(14)),
           ),
         );
       case TextFieldVariant.email:
         textFormFieldVariant = TextFormField(
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(
+              fontSize: 18,
+              color: Color.fromARGB(255, 113, 113, 113),
+              fontWeight: FontWeight.w500),
           controller: widget.controller,
           validator: widget.validator,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            labelStyle: const TextStyle(color: Colors.grey),
+            hintStyle: const TextStyle(
+                color: Color.fromARGB(255, 113, 113, 113), fontSize: 18),
             contentPadding: widget.contentPadding ?? const EdgeInsets.all(16),
-            border: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: Color.fromARGB(255, 53, 53, 53)),
-                borderRadius: BorderRadius.circular(8.0)),
+            enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 225, 225, 225), width: 2),
+                borderRadius: BorderRadius.circular(14)),
             focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8.0)),
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 190, 190, 190), width: 2),
+                borderRadius: BorderRadius.circular(14)),
             errorBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: Color.fromARGB(255, 159, 44, 36)),
-                borderRadius: BorderRadius.circular(8.0)),
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 159, 44, 36), width: 2),
+                borderRadius: BorderRadius.circular(14)),
+            focusedErrorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 159, 44, 36), width: 2),
+                borderRadius: BorderRadius.circular(14)),
           ),
         );
       case TextFieldVariant.password:
         textFormFieldVariant = TextFormField(
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(
+              fontSize: 18,
+              color: Color.fromARGB(255, 113, 113, 113),
+              fontWeight: FontWeight.w500),
           controller: widget.controller,
           obscureText: _isObscured,
           keyboardType: TextInputType.visiblePassword,
           validator: widget.validator,
           decoration: InputDecoration(
               hintText: widget.hintText,
-              labelStyle: const TextStyle(color: Colors.grey),
+              hintStyle: const TextStyle(
+                  color: Color.fromARGB(255, 113, 113, 113), fontSize: 18),
               contentPadding: widget.contentPadding ?? const EdgeInsets.all(16),
-              border: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: Color.fromARGB(255, 53, 53, 53)),
-                  borderRadius: BorderRadius.circular(8.0)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 225, 225, 225), width: 2),
+                  borderRadius: BorderRadius.circular(14)),
               focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(8.0)),
+                  borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 190, 190, 190), width: 2),
+                  borderRadius: BorderRadius.circular(14)),
               errorBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: Color.fromARGB(255, 159, 44, 36)),
-                  borderRadius: BorderRadius.circular(8.0)),
+                  borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 159, 44, 36), width: 2),
+                  borderRadius: BorderRadius.circular(14)),
+              focusedErrorBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 159, 44, 36), width: 2),
+                  borderRadius: BorderRadius.circular(14)),
               suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
