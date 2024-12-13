@@ -25,8 +25,9 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.13),
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.13,
+              bottom: MediaQuery.of(context).size.height * 0.06),
           child: Column(
             children: [
               Row(
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 4),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: CustomTextformfield(
+                      child: CustomTextFormField(
                         hintText: "user@email.com",
                         controller: emailController,
                         variant: TextFieldVariant.email,
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 4),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: CustomTextformfield(
+                      child: CustomTextFormField(
                         hintText: "Your Password",
                         controller: passwordController,
                         variant: TextFieldVariant.password,
@@ -124,6 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: CustomElevatedButton(
                         variant: ElevatedButtonVariant.filled,
                         label: "Login",
+                        textStyle: const TextStyle(fontSize: 16),
                         onPressed: () async {
                           if (_formKey.currentState?.validate() ?? false) {
                             final email = emailController.text;
@@ -161,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Expanded(
                       child: Container(
-                        color: const Color.fromARGB(255, 44, 44, 44),
+                        color: const Color.fromARGB(255, 190, 190, 190),
                         width: 100,
                         height: 1,
                       ),
@@ -175,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Expanded(
                       child: Container(
-                        color: const Color.fromARGB(255, 44, 44, 44),
+                        color: const Color.fromARGB(255, 190, 190, 190),
                         width: 100,
                         height: 1,
                       ),
@@ -190,6 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                   CustomElevatedButton(
                     variant: ElevatedButtonVariant.outlined,
                     label: "Continue with Google",
+                    textStyle: const TextStyle(fontSize: 16),
                     onPressed: () {
                       print("pressed!");
                     },
@@ -204,7 +207,7 @@ class _LoginPageState extends State<LoginPage> {
                   )
                 ]),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Stack(
@@ -212,6 +215,7 @@ class _LoginPageState extends State<LoginPage> {
                     CustomElevatedButton(
                       variant: ElevatedButtonVariant.outlined,
                       label: "Continue with Facebook",
+                      textStyle: const TextStyle(fontSize: 16),
                       onPressed: () {
                         print("Pressed!");
                       },
@@ -235,7 +239,9 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     const Text(
                       "Don't have an account yet?",
-                      style: TextStyle(color: Colors.black, fontSize: 16),
+                      style: TextStyle(
+                          color: Color.fromRGBO(100, 100, 100, 1),
+                          fontSize: 16),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 5),

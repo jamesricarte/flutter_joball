@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 enum TextFieldVariant { normal, password, email }
 
-class CustomTextformfield extends StatefulWidget {
+class CustomTextFormField extends StatefulWidget {
   final TextFieldVariant variant;
   final TextEditingController controller;
   final String hintText;
   final String? Function(String?)? validator;
   final EdgeInsetsGeometry? contentPadding;
 
-  const CustomTextformfield({
+  const CustomTextFormField({
     super.key,
     this.variant = TextFieldVariant.normal,
     this.validator,
@@ -19,12 +19,12 @@ class CustomTextformfield extends StatefulWidget {
   });
 
   @override
-  State<CustomTextformfield> createState() => _CustomTextformfieldState();
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
 bool _isObscured = true;
 
-class _CustomTextformfieldState extends State<CustomTextformfield> {
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     TextFormField textFormFieldVariant;

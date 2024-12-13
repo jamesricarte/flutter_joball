@@ -44,7 +44,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: const Text(
@@ -70,7 +70,7 @@ class _SignupPageState extends State<SignupPage> {
                     const SizedBox(height: 4),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: CustomTextformfield(
+                      child: CustomTextFormField(
                         hintText: "user@email.com",
                         controller: emailController,
                         variant: TextFieldVariant.email,
@@ -95,7 +95,7 @@ class _SignupPageState extends State<SignupPage> {
                     const SizedBox(height: 4),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: CustomTextformfield(
+                      child: CustomTextFormField(
                         hintText: "Your Password",
                         controller: passwordController,
                         variant: TextFieldVariant.password,
@@ -120,7 +120,7 @@ class _SignupPageState extends State<SignupPage> {
                     const SizedBox(height: 4),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: CustomTextformfield(
+                      child: CustomTextFormField(
                         hintText: "Confirm your Password",
                         controller: confirmPasswordController,
                         variant: TextFieldVariant.password,
@@ -140,6 +140,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: CustomElevatedButton(
                         variant: ElevatedButtonVariant.filled,
                         label: "Sign Up",
+                        textStyle: const TextStyle(fontSize: 16),
                         onPressed: () async {
                           if (_formKey.currentState?.validate() ?? false) {
                             final email = emailController.text;
@@ -186,7 +187,7 @@ class _SignupPageState extends State<SignupPage> {
                   children: [
                     Expanded(
                       child: Container(
-                        color: const Color.fromARGB(255, 44, 44, 44),
+                        color: const Color.fromARGB(255, 190, 190, 190),
                         width: 100,
                         height: 1,
                       ),
@@ -200,7 +201,7 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     Expanded(
                       child: Container(
-                        color: const Color.fromARGB(255, 44, 44, 44),
+                        color: const Color.fromARGB(255, 190, 190, 190),
                         width: 100,
                         height: 1,
                       ),
@@ -215,6 +216,7 @@ class _SignupPageState extends State<SignupPage> {
                   CustomElevatedButton(
                     variant: ElevatedButtonVariant.outlined,
                     label: "Continue with Google",
+                    textStyle: const TextStyle(fontSize: 16),
                     onPressed: () {
                       print("pressed!");
                     },
@@ -229,13 +231,14 @@ class _SignupPageState extends State<SignupPage> {
                   )
                 ]),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Stack(
                   children: [
                     CustomElevatedButton(
                       variant: ElevatedButtonVariant.outlined,
+                      textStyle: const TextStyle(fontSize: 16),
                       label: "Continue with Facebook",
                       onPressed: () {
                         print("Pressed!");
@@ -260,7 +263,9 @@ class _SignupPageState extends State<SignupPage> {
                   children: [
                     const Text(
                       "Already have an account?",
-                      style: TextStyle(color: Colors.black, fontSize: 16),
+                      style: TextStyle(
+                          color: Color.fromRGBO(100, 100, 100, 1),
+                          fontSize: 16),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 5),
